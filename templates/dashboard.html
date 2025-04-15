@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 50%;
+            margin: 100px auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+        h2 {
+            color: #333;
+        }
+        .btn-container {
+            margin-top: 20px;
+        }
+        .btn {
+            display: block;
+            width: 80%;
+            margin: 10px auto;
+            padding: 8px;
+            text-decoration: none;
+            color: black;
+            background-color: #e0e0e0;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            font-size: 16px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #d6d6d6;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+    
+        <h2>Select an option to proceed:</h2>
+        
+        <div class="btn-container">
+            <a href="{{ url_for('predict1') }}" class="btn">Crop Recommendation System</a>
+            <a href="{{ url_for('mt_page') }}" class="btn">Leaf Disease Detection</a>
+            <a href="{{ url_for('logout') }}" class="btn">Logout</a>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Recommendation</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f0f5f1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: #ffffff;
+            padding: 30px 35px;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        h2 {
+            color: #2e7d32;
+            font-weight: 500;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        p {
+            font-size: 14px;
+            text-align: center;
+            color: #4b6043;
+            margin-bottom: 20px;
+        }
+
+        .logout {
+            color: #558b2f;
+            text-decoration: none;
+            margin-left: 5px;
+            font-weight: 500;
+        }
+
+        .logout:hover {
+            text-decoration: underline;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        label {
+            font-size: 14px;
+            color: #33691e;
+        }
+
+        input {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 14px;
+            background-color: #f9fdf9;
+            color: #333;
+            transition: 0.2s;
+        }
+
+        input:focus {
+            border-color: #81c784;
+            box-shadow: 0 0 5px rgba(129, 199, 132, 0.3);
+            outline: none;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #a5d6a7;
+            color: #2e7d32;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #c8e6c9;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 16px;
+            color: #2e7d32;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>🌱 Crop Recommendation</h2>
+        <p>
+            Welcome, <strong>{{ session['username'] }}</strong>!
+            <a href="/logout" class="logout">Logout</a>
+        </p>
+
+        <form action="/predict1" method="post">
+            <label for="nitrogen">Nitrogen</label>
+            <input type="text" name="Nitrogen" id="nitrogen" required>
+
+            <label for="phosphorus">Phosphorus</label>
+            <input type="text" name="Phosphorus" id="phosphorus" required>
+
+            <label for="potassium">Potassium</label>
+            <input type="text" name="Potassium" id="potassium" required>
+
+            <label for="temperature">Temperature</label>
+            <input type="text" name="Temperature" id="temperature" required>
+
+            <label for="humidity">Humidity</label>
+            <input type="text" name="Humidity" id="humidity" required>
+
+            <label for="ph">pH Value</label>
+            <input type="text" name="pH_Value" id="ph" required>
+
+            <label for="rainfall">Rainfall</label>
+            <input type="text" name="Rainfall" id="rainfall" required>
+
+            <button type="submit">Predict Crop</button>
+        </form>
+
+        {% if prediction_text %}
+        <div class="result">
+            <p>{{ prediction_text }}</p>
+        </div>
+        {% endif %}
+    </div>
+
+</body>
+</html>
